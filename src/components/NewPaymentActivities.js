@@ -7,7 +7,7 @@ import Frame from "../assets/Frame.svg";
 import { AnimatePresence, motion } from "framer-motion";
 const NewPaymentActivites = () => {
   const [componentList, setComponentList] = useState([1, 2, 3, 4, 5, 6]);
-
+  const [topIndex,setTopIndex]=useState(0);
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const xVariants = {
@@ -78,11 +78,13 @@ const NewPaymentActivites = () => {
   };
 
   const nextStep = () => {
+    setTopIndex(topIndex+8);
     setDirection(1);
     if (index === componentList.length - 1) setIndex(0);
     else setIndex(index + 1);
   };
   const prevStep = () => {
+    setTopIndex(topIndex-8);
     setDirection(-1);
     if (index === 0) setIndex(componentList.length - 1);
     else setIndex(index - 1);
@@ -94,11 +96,9 @@ const NewPaymentActivites = () => {
         </div> */}
 
       <div
-        className={`hidden md:flex w-[4px] h-[350px] pt-${
-          8 * index
-        } bg-[#F2F4F7]`}
+        className={`hidden md:flex w-[4px] h-[350px] relative bg-[#F2F4F7]`}
       >
-        <div className={`h-[100px] w-[4px]  bg-[#7936F4]`}></div>
+        <div className={`h-[100px] w-[4px] absolute  bg-[#7936F4]`} style={{top:`${topIndex}px`}}></div>
       </div>
 
       <div className="hidden md:flex relative h-auto sm:h-[450px] lg:h-[400px] bg-[#ffffff] mx-8">
