@@ -2,7 +2,8 @@ import React from "react";
 import { ContentPlaceholder } from "./ContentPlaceholder";
 import { Example } from "./Example";
 import FAQPlaceholder from "./FAQPlaceholder";
-
+import AccordionIcon from "../assets/Accordion.svg";
+import AccordionIconHide from "../assets/AccordionHide.svg";
 import ArrowRight from "../assets/BlackArrow.svg";
 const FAQ = () => {
   const accordionIds = [
@@ -40,7 +41,11 @@ const FAQ = () => {
       </div>
       <div className=" bg-white py-6">
         <div className="grid gap-y-8">
-          <Example accordionIds={accordionIds} isDivider={true} />
+          <Example
+            accordionIds={accordionIds}
+            isDivider={true}
+            dynamicIcons={{ open: AccordionIcon, close: AccordionIconHide }}
+          />
         </div>
       </div>
       <div class={`flex grid grid-cols-12`}>

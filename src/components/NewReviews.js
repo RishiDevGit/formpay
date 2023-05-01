@@ -10,6 +10,7 @@ import InActiveImage from "../assets/InActiveImage.svg";
 import { AnimatePresence, motion } from "framer-motion";
 const NewReviews = () => {
   const [direction, setDirection] = useState(0);
+
   const xVariants = {
     initial: (direction) => {
       return { x: direction > 0 ? 200 : -200, opacity: 0 };
@@ -46,15 +47,21 @@ const NewReviews = () => {
   const [componentList, setComponentList] = useState([1, 2, 3, 4, 5, 6]);
 
   const [index, setIndex] = useState(0);
-  const nextStep = () => {
+  const nextStep = (specificIndex = -1) => {
     setDirection(1);
-    if (index === componentList.length - 1) setIndex(0);
-    else setIndex(index + 1);
+    if (specificIndex >= 0) setIndex(specificIndex);
+    else {
+      if (index === componentList.length - 1) setIndex(0);
+      else setIndex(index + 1);
+    }
   };
-  const prevStep = () => {
+  const prevStep = (specificIndex = -1) => {
     setDirection(-1);
-    if (index === 0) setIndex(componentList.length - 1);
-    else setIndex(index - 1);
+    if (specificIndex >= 0) setIndex(specificIndex);
+    else {
+      if (index === 0) setIndex(componentList.length - 1);
+      else setIndex(index - 1);
+    }
   };
   return (
     <div>
@@ -126,10 +133,16 @@ const NewReviews = () => {
           <div className="flex grid grid-cols-12 mt-4">
             <div className="col-span-6">
               <div style={{ display: "flex", gap: "10px" }}>
-                <img src={ActiveImage} />
-                <img src={InActiveImage} />
-
-                <img src={InActiveImage} />
+                {componentList.map((item, i) => (
+                  <div
+                    onClick={() => {
+                      if (i > index) nextStep(i);
+                      else if (i < index) prevStep(i);
+                    }}
+                  >
+                    <img src={i === index ? ActiveImage : InActiveImage} />
+                  </div>
+                ))}
               </div>
             </div>
             <div className="col-span-6">

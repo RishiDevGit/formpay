@@ -31,7 +31,7 @@ const Footer = () => {
             </button>
           </div>
         </div>
-        <div className="flex flex-col justify-start sm:justify-between  mb-3 absolute py-16 px-0 sm:px-16 sm:py-16 mt-64 lg:mt-52 left-[5%] w-[90%] h-auto">
+        <div className="flex flex-col justify-start sm:justify-between  mb-3 absolute pt-16 pb-0 px-0 sm:px-16 sm:pt-16 sm:pb-16 mt-64 lg:mt-52 left-[5%] w-[90%] h-auto">
           <div class="flex grid grid-cols-10 sm:grid-cols-12 gap-10">
             <div className="col-span-10 sm:col-span-12  lg:col-span-4">
               <div className="flex flex-col w-[220px] sm:w-auto">

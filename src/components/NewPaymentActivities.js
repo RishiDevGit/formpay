@@ -9,9 +9,6 @@ const NewPaymentActivites = () => {
   const [componentList, setComponentList] = useState([1, 2, 3, 4, 5, 6]);
 
   const [index, setIndex] = useState(0);
-  useEffect(() => {
-    console.log("index final", index);
-  }, [index]);
   const [direction, setDirection] = useState(0);
   const xVariants = {
     initial: (direction) => {
